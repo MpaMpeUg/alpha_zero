@@ -1,0 +1,118 @@
+
+<% extend('layout') %>
+
+<!-- Start Main Banner Area -->
+<div class="main-banner item-bg-one inner-banner">
+    <div class="d-table">
+      <div class="d-table-cell">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 col-md-12">
+              <h2>Explore Campaigns</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Main Banner Area -->
+  <section class="Categories pt80 pb80">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md-8">
+          <!-- <p class="subtitle text-secondary nopadding">Stay and eat like a local</p> -->
+          <h1 class="paddtop1 font-weight lspace-sm">Explore Categories</h1>
+        </div>
+        <!-- <div class="col-md-4 d-lg-flex align-items-center justify-content-end"><a href="#" class="blist text-sm ml-2"> See all Categories<i class="fas fa-angle-double-right ml-2"></i></a></div> -->
+      </div>
+      <div class="row">
+        <div class="swiper-container guides-slider"> 
+          <!-- Additional required wrapper-->
+          <div class="swiper-wrapper"> 
+            <!-- Slides-->
+            <div class="swiper-slide h-auto px-2">
+              <div class="card card-poster gradient-overlay mb-4 mb-lg-0"><a href="#" class="tile-link"></a><img src="images/photo/1.jpg" alt="Card image" class="bg-image">
+                <div class="card-body overlay-content">
+                  <h6 class="card-title text-shadow text-uppercase">Orphans</h6>
+                  <p class="card-text text-sm"></p>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide h-auto px-2">
+              <div class="card card-poster gradient-overlay mb-4 mb-lg-0"><a href="#" class="tile-link"></a><img src="images/woman1.jpg" alt="Card image" class="bg-image">
+                <div class="card-body overlay-content">
+                  <h6 class="card-title text-shadow text-uppercase">Single Mothers</h6>
+                  <p class="card-text text-sm"></p>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide h-auto px-2">
+              <div class="card card-poster gradient-overlay mb-4 mb-lg-0"><a href="#" class="tile-link"></a><img src="images/photo/3.jpg" alt="Card image" class="bg-image">
+                <div class="card-body overlay-content">
+                  <h6 class="card-title text-shadow text-uppercase">Covid 19</h6>
+                  <p class="card-text text-sm"></p>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide h-auto px-2">
+              <div class="card card-poster gradient-overlay mb-4 mb-lg-0"><a href="#" class="tile-link"></a><img src="images/wed.jpg" alt="Card image" class="bg-image">
+                <div class="card-body overlay-content">
+                  <h6 class="card-title text-shadow text-uppercase">Weddings</h6>
+                  <p class="card-text text-sm"></p>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide h-auto px-2">
+              <div class="card card-poster gradient-overlay mb-4 mb-lg-0"><a href="#" class="tile-link"></a><img src="images/bedridden.jpg" alt="Card image" class="bg-image">
+                <div class="card-body overlay-content">
+                  <h6 class="card-title text-shadow text-uppercase">Health</h6>
+                  <p class="card-text text-sm"></p>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide h-auto px-2">
+              <div class="card card-poster gradient-overlay mb-4 mb-lg-0"><a href="#" class="tile-link"></a><img src="images/photo/WIM.png" alt="Card image" class="bg-image">
+                <div class="card-body overlay-content">
+                  <h6 class="card-title text-shadow text-uppercase">Businesses</h6>
+                  <p class="card-text text-sm"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination d-md-none"> </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="Campaigns pt80 pb80">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h6 class="nopadding lspace">Discover Campaigns</h6>
+          <h1 class="paddtop1 font-weight lspace-sm">New <span class="text-orange">campaigns</span></h1>
+          <div class="title-line align-center"></div>
+        </div>
+      </div>
+      <div class="row">
+
+        <% campaigns.forEach(function(campaign){ %>
+            <%- include('common/campaign', {campaign: campaign}) %>
+        <% }); %>
+
+        <% if (campaigns.length > 10) { %>
+            <div class="row">
+                <div class="col-md-12">
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                      <li class="page-item"><a class="page-link" href="##">Previous</a></li>
+                      <li class="page-item"><a class="page-link" href="##">1</a></li>
+                      <li class="page-item"><a class="page-link" href="##">2</a></li>
+                      <li class="page-item"><a class="page-link" href="##">3</a></li>
+                      <li class="page-item"><a class="page-link" href="##">Next</a></li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+        <% } %>
+    </div>
+  </section>

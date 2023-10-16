@@ -1,0 +1,51 @@
+<%- include('format_currency') %>
+<div class="col-md-4 col-sm-12 col-xs-12">
+  <div class="campaign-item">
+    <a class="overlay" href="campaigns/<%= campaign.id %>">
+      <img
+        src="<%= campaign.photo || 'https://dummyimage.com/600x330/f26422/00ffff.png&text=mpampe' %> "
+        alt=""
+      />
+      <span class="fas fa-link"></span>
+    </a>
+    <div class="campaign-box">
+      <a href="#" class="category"><%= campaign.category %></a>
+      <h3>
+        <a href="campaigns/<%= campaign.id %>"
+          ><%= campaign.title %></a
+        >
+      </h3>
+      <div class="campaign-description"><%= campaign.shortDescription %></div>
+      <div class="campaign-author">
+        by
+        <a class="author-name" href="#"><%= campaign.user.fullName %></a>
+      </div>
+      <div class="process">
+        <div class="progress">
+          <div class="progress-bar" style="width: <%= campaign.percentage %>%">
+            <div class="progress-value">
+              <span><%= campaign.percentage %></span>%
+            </div>
+          </div>
+        </div>
+        <div class="process-info">
+          <div class="process-pledged">
+            <span><%= campaign.daysLeft %></span>Days left
+          </div>
+          <div class="process-funded">
+            <span><%= campaign.backers %></span>Backers
+          </div>
+          <div class="process-time">
+            <span>
+              <script>
+                document.write(
+                  currencyFormatter.format("<%= campaign.funds %>")
+                );
+              </script></span
+            >Funded
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

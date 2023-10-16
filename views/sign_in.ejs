@@ -1,0 +1,115 @@
+<% extend('layout') %>
+<div class="main-banner item-bg-one inner-banner">
+  <div class="d-table">
+    <div class="d-table-cell">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12">
+            <h2>Welcome-back</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <div class="login100-pic js-tilt" data-tilt>
+        <img src="images/register.jpg" alt="IMG" />
+      </div>
+      <form
+        class="login100-form validate-form"
+        onsubmit="submitForm(event)"
+        id="userDataForm"
+      >
+        <div style="margin-bottom: 15px; display: none" id="flashNotice"></div>
+        <span class="login100-form-title"> Member Login</span>
+        <div
+          class="wrap-input100 validate-input"
+          data-validate="Valid email is required: ex@abc.xyz"
+        >
+          <input
+            class="input100"
+            type="text"
+            name="username"
+            placeholder="Email or username"
+          />
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+          </span>
+        </div>
+        <div
+          class="wrap-input100 validate-input"
+          data-validate="Password is required"
+        >
+          <input
+            class="input100"
+            type="password"
+            name="password"
+            placeholder="Password"
+          />
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+          </span>
+        </div>
+        <div class="container-login100-form-btn">
+          <button class="login100-form-btn">Login</button>
+        </div>
+        <div class="text-center p-t-136">
+          <a class="txt2" href="/sign_up">
+            Create your Account
+            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include('common/ajax.ejs') %>
+
+<script>
+  function flashNotice(message, time = 3000) {
+    const flashNoticeEl = document.getElementById("flashNotice");
+    flashNoticeEl.innerHTML = message;
+    flashNoticeEl.style.display = "block";
+    setTimeout(() => {
+      flashNoticeEl.innerHTML = "";
+      flashNoticeEl.style.display = "none";
+    }, time);
+  }
+</script>
+
+<script>
+  window.onload = () => {
+    if (window.location.href.includes("redirect")) {
+      flashNotice("Login before you continue!", 10 * 1000);
+    }
+  };
+</script>
+
+<script type="text/javascript">
+  function submitForm(event) {
+    event.preventDefault();
+    const form = document.getElementById("userDataForm");
+    const formEntries = new FormData(form).entries();
+    const formData = Object.assign(
+      ...Array.from(formEntries, ([x, y]) => ({ [x]: y }))
+    );
+
+    postData("/api/v1/auth/login", formData).then((data) => {
+      if (data.message) {
+        flashNotice(data.message);
+      } else {
+        if (window.location.href.includes("redirect")) {
+          window.location = `/${window.location.href.split("=/")[1]}`;
+        } else {
+          window.location.reload();
+        }
+      }
+    });
+  }
+</script>

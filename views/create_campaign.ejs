@@ -1,0 +1,255 @@
+<% extend('layout') %>
+
+<!-- Start Main Banner Area -->
+<div class="main-banner item-bg-three inner-banner">
+  <div class="d-table">
+    <div class="d-table-cell">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12">
+            <h2>Start A Campaign</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="limiter campaign_create pt50 pb50">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <form
+        method="POST"
+        id="startCampaignForm"
+        class="form-horizontal"
+        onsubmit="submitForm(event)"
+      >
+        <div class="form-group">
+          <label for="category" class="col-md-12 control-label"
+            >Category <span class="field-required">*</span></label
+          >
+          <div class="col-md-12">
+            <select class="form-control select2" name="category">
+              <option value="">Select a category</option>
+              <option value="EDUCATION">EDUCATION</option>
+              <option value="Foods and Drinks">Foods and Drinks</option>
+              <option value="Health">Health</option>
+              <option value="Nonprofit">Nonprofit</option>
+              <option value="Business">Business</option>
+              <option value="Orphans">Orphans</option>
+              <option value="Girl Child">Girl Child</option>
+              <option value="Community Projects">Community Projects</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="title" class="col-md-12 control-label"
+            >Title <span class="field-required">*</span></label
+          >
+          <div class="col-md-12">
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              name="title"
+              placeholder="Title"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="short_description" class="col-md-12 control-label"
+            >Short Description</label
+          >
+          <div class="col-md-12">
+            <textarea
+              name="shortDescription"
+              class="form-control"
+              rows="3"
+            ></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="description" class="col-md-12 control-label"
+            >Description <span class="field-required">*</span></label
+          >
+          <div class="col-md-12">
+            <textarea
+              name="description"
+              class="form-control description"
+              rows="8"
+            ></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="goal" class="col-md-12 control-label"
+            >Goal <span class="field-required">*</span></label
+          >
+          <div class="col-md-12">
+            <input
+              type="number"
+              class="form-control"
+              id="goal"
+              value=""
+              name="goal"
+              placeholder="Goal"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="end_method" class="col-md-12 control-label"
+            >Campaign end method</label
+          >
+          <div class="col-md-12">
+            <label>
+              <input
+                type="radio"
+                name="endMethod"
+                value="goal_achieve"
+                checked="checked"
+              />
+              After goal achieve
+            </label>
+            <label>
+              <input type="radio" name="endMethod" value="end_date" />
+              After end date</label
+            >
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="photo" class="col-md-12 control-label">Photo</label>
+          <div class="col-md-12">
+            <input
+              type="text"
+              class="form-control"
+              id="photo"
+              value=""
+              name="photo"
+              placeholder="https://photos/image.jpg"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="video" class="col-md-12 control-label">Video</label>
+          <div class="col-md-12">
+            <input
+              type="text"
+              class="form-control"
+              id="video"
+              value=""
+              name="video"
+              placeholder="https://www.youtube.com/watch?v=xxxxxxxxx"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="country_id" class="col-md-12 control-label"
+            >District<span class="field-required">*</span></label
+          >
+          <div class="col-md-12">
+            <select
+              class="form-control select2"
+              name="district"
+              id="districtList"
+            >
+              <option value="">Select a district</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="address" class="col-md-12 control-label">Address</label>
+          <div class="col-md-12">
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              value=""
+              name="address"
+              placeholder="Address"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="start_date" class="col-md-12 control-label"
+            >Start date</label
+          >
+          <div class="col-md-12">
+            <input
+              type="date"
+              class="form-control"
+              id="start_date"
+              value=""
+              name="startDate"
+              placeholder="Start date"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="end_date" class="col-md-12 control-label">End date</label>
+          <div class="col-md-12">
+            <input
+              type="date"
+              class="form-control"
+              id="end_date"
+              value=""
+              name="endDate"
+              placeholder="End date"
+            />
+          </div>
+        </div>
+        <div style="margin-bottom: 15px; display: none" id="flashNotice"></div>
+
+        <div class="form-group">
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-primary">
+              Submit new campaign
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.onload = function () {
+    fetch("https://ug-places-api.herokuapp.com/districts")
+      .then((response) => response.json())
+      .then((data) => {
+        const listContainer = document.getElementById("districtList");
+        data.forEach((element) => {
+          let option = document.createElement("option");
+          option.setAttribute("value", element.name);
+          option.innerHTML = element.name;
+          listContainer.appendChild(option);
+        });
+      });
+  };
+</script>
+
+<%- include('common/ajax.ejs') %>
+
+<script type="text/javascript">
+  function submitForm(event) {
+    event.preventDefault();
+    const form = document.getElementById("startCampaignForm");
+    const formEntries = new FormData(form).entries();
+    const flashNotice = document.getElementById("flashNotice");
+    const formData = Object.assign(
+      ...Array.from(formEntries, ([x, y]) => ({ [x]: y }))
+    );
+
+    postData("/api/v1/campaigns", formData).then((data) => {
+      if (data.message) {
+        flashNotice.innerHTML = data.message;
+        flashNotice.style.display = "block";
+
+        setTimeout(() => {
+          flashNotice.innerHTML = "";
+          flashNotice.style.display = "none";
+        }, 3000);
+      } else {
+        form.reset();
+        alert("Campaign created successfully!");
+      }
+    });
+  }
+</script>

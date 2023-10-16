@@ -1,0 +1,182 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+ .main-header-area {
+ height: 70px;
+}
+
+.nav-tabs > li > a {
+    padding: 15px 0 !important;
+    font-size: 10px !important;
+
+}
+
+}
+@media only screen and (max-width: 767px) {
+ .main-header-area {
+ height: 70px;
+}
+.feat-item {
+    margin-bottom: 20px !important;
+}
+.startup-agency-home .main-banner .hero-content {
+    margin-top: 30px !important;
+
+}
+.hero-content h1 {
+
+    font-size: 30px !important;
+}
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+ .main-header-area .getfund-navbar {
+ height: 70px;
+}
+}
+@media only screen and (max-width: 767px) {
+ .main-header-area .getfund-navbar {
+ height: 70px;
+ padding: 0.5em 0;
+}
+.nav-tabs > li > a {
+
+    padding: 12px 5px !important;
+
+}
+}
+
+@media only screen and (max-width: 991px) {
+ .main-header-area .getfundnav ul li a {
+ color: #fff;
+}
+.Footer-nav{
+	padding:0 0 20px 0;
+}
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+ .main-header-area .nav-brand {
+ margin-right: 0;
+}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+ .is-sticky .main-header-area {
+ height: 70px;
+}
+ .light .getfundnav ul li .dropdown, .light .getfundnav ul li .megamenu, .light.breakpoint-on .getfundnav > ul > li > a, .light.breakpoint-on .getfund-navbar .getfund-menu {
+ background-color: #000000;
+}
+}
+@media only screen and (max-width: 767px) {
+ .is-sticky .main-header-area {
+ height: 70px;
+}
+ .light .getfundnav ul li .dropdown, .light .getfundnav ul li .megamenu, .light.breakpoint-on .getfundnav > ul > li > a, .light.breakpoint-on .getfund-navbar .getfund-menu {
+ background-color: #000000;
+}
+
+.nav-tabs > li {
+    text-align: center;
+    width: 100% !important;
+    margin: 0 0 8px 0 !important;
+}
+.feature-box {
+    margin: 0px 0 25px 0 !important;
+}
+.startup-agency-home .main-banner .hero-content {
+    margin-left: 0 !important;
+}
+
+}
+@media only screen and (max-width: 991px) {
+ .main-header-area .nav-brand img {
+ height: auto;
+}
+ .getfundnav ul li.right-side {
+ margin-left: 0;
+}
+ .getfundnav ul li.right-side {
+ margin-left: 0;
+ margin-top: 15px;
+}
+ .getfundnav ul li.right-side ul li {
+ padding-left: 0;
+}
+ .getfundnav ul li.right-side ul li .btn {
+ padding: 2px 22px;
+}
+.nav-tabs > li > a {
+    font-size: 12px;
+}
+}
+@media only screen and (max-width: 576px){
+.topbar .list-inline {
+    text-align: center;
+	padding: 0 0 10px 0;
+}	
+.topbar .socials-top{
+    text-align: center !important;
+}
+
+.home-banner-four .main-banner .main-banner-content p {
+
+    max-width: 80% !important;
+    margin: 0 auto !important;
+}
+
+}
+
+@media only screen and (max-width: 480px){
+.nav-tabs > li {
+    text-align: center;
+    width: 100%;
+    margin: 8px 0 0 0;
+}
+
+.clientlogo-list li {
+    display: inline-block;
+    padding: 0 10px 0 0;
+    margin: 0px 0 10px 0 !important;
+    width: 100% !important;
+}
+.clientlogo-list {
+    text-align: center;
+}
+
+.campaign_detail .nav-tabs > li {
+    width: 100% !important;
+    margin: 0 0 8px 0 !important;
+}
+}
+
+.modal-footer {
+    width: 100%;
+   
+    
+    
+}
+
+@media only screen and (max-width: 550px){
+.modal-footer { 
+    display: inline-block;
+}
+#mtn_momoBtn, #googleButton, #ethTip {
+   margin-bottom: 10px;
+}
+#mtn_momoBtn, #ethTip {
+    
+    width: 180px; 
+    height: 49px;
+ }
+
+
+    
+    }
+
+/* margin-bottom: 10px; */
+/* margin: 10px auto; */

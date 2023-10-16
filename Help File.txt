@@ -1,0 +1,62 @@
+This file contains our code stracture (files that have the momo endpoints) Plus How to fix some installation errors
+
+Our codebase is organised in directories and their naming convention is related to what each does;
+These are the main directories and what they do;
+
+MAIN FILES
+"app.js" : Main entry file
+"captain-definition" : Own Dockerfile Deployer.
+"constants.js" : Manage all app constants
+"database.js" : MongoDB File
+"Help File For MTN MoMo 22 Judges.txt" : This file
+"package.json" : All NPM packages used
+"package-lock.json" : Auto Generated for dependencies
+
+MAIN DIRECTORIES
+"controllers" : Control key MpaMpe logic
+"middlewares" : Access Requests to MpaMpe Objects
+"models" : Managing & DB Definition
+"node_modules" : Modules used
+"public" : HTML, JavaScript & Images 
+"routes" : MpaMpe main routes
+"services" : All Core MpaMpe Functions
+"utils": MpaMpe small snippets & Error Handling files
+"validations" : Handle authorisation
+"views" : MpaMpe Main Views
+"bin" : VERY IMPORTANT: MpaMpe File responsible for running the app alongside app.js
+
+INSTALLATION : ERRORS
+Two methods to run our prototype. (We ensure privacy at all cost) .
+In case you have access to the repo, assuming that you have accepted the invite, you can clone directly; And in case you have the zip file, you can extract it.  Let's see how to use both methods;
+
+This is a node Js Project and will assume that you have Node installed.
+
+✨ From GitHub: (Accept the collab invite)
+Run the following commands in your terminal;
+
+1. "git clone https://github.com/MpaMpeUg/mpampe-alpha.git"
+2. "cd mpampe-alpha" to locate package.json file
+3. Run "npm install"
+
+After all node modules have been installed; (Internet is required) 
+To Start local server 🚀
+
+4. Run "npm start"
+5. Visit "http://localhost:3000/" in your fav browser 🚀
+
+You don't need to run the npm fund command... You can also ignore deprecation and warning errors. 
+We have set our default server to run on port 3000.
+
+✨ From ZIP
+1. Extract to your favorite folder/name
+2. Change the directory to the root folder to locate the package.json file: "cd mpampe-alpha"
+3. Repeat steps 3-5 above.
+
+In case of ERRORS
+First Try; "npm cache clean"
+OR; "npm cache clean --force" to force.
+
+If you encounter errors due to the Node version defined in package-lock.json, manually delete it and run npm install again.
+Also, make sure Port 3000 is not in use already before you run npm start
+
+More Errors; Email us at info@mpampe.com or ronlinx6@gmail.com; Preferably GMAIL!

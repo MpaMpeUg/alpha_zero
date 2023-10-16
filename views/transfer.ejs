@@ -1,0 +1,112 @@
+<% extend('layout') %>
+<div style="margin-bottom: 100px"></div>
+<center>
+  <div class="col-lg-4 col-md-12 col-xs-12">
+    <div class="campaign-item">
+      <div class="bg-light-transparent">
+        <h4 class="text-uppercase line-bottom">TRANSFER FUNDS</h4>
+
+        <form id="transfer_form" onsubmit="submitForm(event)">
+          <div class="row">
+            <div style="margin: 15px; display: none" id="flashNotice"></div>
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label><strong>Currency</strong></label>
+                <select name="currency" class="form-control">
+                  <option value="">Select Currency</option>
+                  <option value="EUR" selected="selected">EUR</option>
+                  <option value="UGX">UGX - Uganda Shillings</option>
+                  <option value="USD">USD - U.S. Dollars</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label
+                  ><strong>How much do you want to transfer?</strong></label
+                >
+                <input
+                  name="amount"
+                  placeholder="Amount"
+                  class="form-control"
+                  required
+                />
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label><strong>Currency</strong></label>
+                <select name="idType" class="form-control" required>
+                  <option value="">Select ID Type</option>
+                  <option value="MSISDN">MSISDN</option>
+                  <option value="ACCOUNT_NO">ACCOUNT NUMBER</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label><strong>ID Value</strong></label>
+                <input
+                  name="idValue"
+                  placeholder="ID Value"
+                  class="form-control"
+                  required
+                />
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group">
+                <button
+                  type="submit"
+                  class="btn btn-flat btn-dark btn-theme-colored"
+                  id="transferButton"
+                >
+                  TRANSFER NOW
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</center>
+<div style="margin-bottom: 100px"></div>
+<%- include('common/ajax.ejs') %> <%- include('common/confirm_transfer') %>
+
+<script type="text/javascript">
+  function submitForm(event) {
+    event.preventDefault();
+    const form = document.getElementById("transfer_form");
+    const formEntries = new FormData(form).entries();
+    const flashNotice = document.getElementById("flashNotice");
+    const formData = Object.assign(
+      ...Array.from(formEntries, ([x, y]) => ({ [x]: y }))
+    );
+    const confirmTransfer = document.getElementById("confirmBtn");
+    transferButton.innerHTML = "Processing...";
+    transferButton.setAttribute("disable", "true");
+
+    postData("/api/v1/transactions/withdraw", formData).then((data) => {
+      transferButton.innerHTML = "TRANSFER NOW";
+      transferButton.setAttribute("disable", "false");
+
+      if (data.message) {
+        alert(data.message);
+        flashNotice.innerHTML = data.message;
+        flashNotice.style.display = "block";
+
+        setTimeout(() => {
+          flashNotice.innerHTML = "";
+          flashNotice.style.display = "none";
+        }, 3000);
+      } else {
+        confirmAccountName.innerHTML = data.name;
+        confirmPhone.innerHTML = data.idValue;
+        confirmCurrency.innerHTML = data.currency;
+        confirmAmount.innerHTML = data.amount;
+        confirmTransfer.click();
+      }
+    });
+  }
+</script>

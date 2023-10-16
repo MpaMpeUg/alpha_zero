@@ -1,0 +1,130 @@
+<% extend('layout') %>
+
+<!-- Start Main Banner Area -->
+
+<div class="main-banner item-bg-one inner-banner">
+  <div class="d-table">
+    <div class="d-table-cell">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12">
+            <h2>Get In Touch With Us</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="googlemap">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7507180464017!2d32.56531055003941!3d0.33353576408991803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbb6d88e54def%3A0xddc6fcfbe10b089d!2sMakerere%20University!5e0!3m2!1sen!2sug!4v1647435194979!5m2!1sen!2sug" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
+
+<section class="contact-pg-section pt60 pb60" id="contactform">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7 col-md-6 col-sm-12">
+        <div class="section-title-s4">
+          <h2>Get In Touch</h2>
+          <p>
+            Fill in your details below and help us know how we may help you.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-7 col-md-6 col-sm-12">
+        <form
+          method="post"
+          class="contact-validation-active"
+          id="contact-form-main"
+          novalidate="novalidate"
+        >
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              name="name"
+              id="name"
+              placeholder="Name*"
+            />
+          </div>
+          <div>
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              id="email"
+              placeholder="Email*"
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              name="phone"
+              id="phone"
+              placeholder="Phone*"
+            />
+          </div>
+          <div>
+            <select name="subject" class="form-control">
+              <option disabled="disabled" selected="">Contact subject</option>
+              <option>Subject 1</option>
+              <option>Subject 2</option>
+              <option>Subject 3</option>
+            </select>
+          </div>
+          <div class="fullwidth">
+            <textarea
+              class="form-control"
+              name="note"
+              id="note"
+              placeholder="Case Description..."
+            ></textarea>
+          </div>
+          <div class="submit-area">
+            <button type="submit" class="theme-btn-s4">Submit Now</button>
+            <div id="loader">
+              <i class="ti-reload"></i>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-lg-5 col-md-6 col-sm-12">
+        <div class="contact-info">
+          <div>
+            <div class="icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <div class="details">
+              <h5>Call us here</h5>
+              <p>+256 772 024843 OR +256 783 276087</p>
+            </div>
+          </div>
+          <div>
+            <div class="icon">
+              <i class="far fa-envelope"></i>
+            </div>
+            <div class="details">
+              <h5>Mail us</h5>
+              <p>info@mpampe.com</p>
+            </div>
+          </div>
+          <div>
+            <div class="icon">
+              <i class="fas fa-street-view"></i>
+            </div>
+            <div class="details">
+              <h5>Find Us</h5>
+              <p>Makerere University, Kampala Univ Road, Kampala</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end container -->
+</section>
+

@@ -1,0 +1,88 @@
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="confirmTransfer"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">
+          CONFIRM TRANSFER
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          id="closeConfirmTransfer"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="paypal_donate_form">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group mb-20 text-black">
+                <label><strong>BENEFICIARY NAME:</strong></label>
+                <span id="confirmAccountName"></span>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group mb-20 text-black">
+                <label><strong>PHONE NUMBER:</strong></label>
+                <span id="confirmPhone"></span>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group mb-20 text-black">
+                <label><strong>CURRENCY:</strong></label>
+                <span id="confirmCurrency"></span>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group mb-20 text-black">
+                <label><strong>AMOUNT:</strong></label>
+                <span id="confirmAmount"></span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="confirmTransferBtn">
+          CONFIRM
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<button
+  data-toggle="modal"
+  data-target="#confirmTransfer"
+  style="display: none"
+  id="confirmBtn"
+>
+  FAKE CONFIRM
+</button>
+<script>
+  confirmTransferBtn.onclick = function (e) {
+    e.target.innerHTML = "Processing...";
+    e.target.setAttribute("disable", "true");
+
+    const form = document.getElementById("transfer_form");
+    postData("/api/v1/transactions/transfer", {}).then((data) => {
+      e.target.innerHTML = "CONFIRM";
+      e.target.setAttribute("disable", "false");
+      alert(data?.message);
+      closeConfirmTransfer.click();
+    });
+  };
+</script>

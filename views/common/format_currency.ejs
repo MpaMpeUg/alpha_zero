@@ -1,0 +1,10 @@
+<script>
+  var currencyFormatter = function (amount, currency = "UGX") {
+    const formatter = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency,
+    });
+
+    return formatter.format(amount);
+  };
+</script>

@@ -1,0 +1,214 @@
+
+<% extend('layout') %>
+<%- include('common/format_currency') %>
+
+<!-- Start Main Banner Area -->
+<div class="main-banner item-bg-one inner-banner">
+    <div class="d-table">
+      <div class="d-table-cell">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 col-md-12">
+              <h2>Campaign Details</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="campaign_detail pt60 pb60 blog-single-section ">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-sm-12 col-xs-12"> 
+          
+          <!-- Nav tabs -->
+          <div class="card">
+            <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation" class="active"><a class="active" href="#Campaign" aria-controls="Campaign" role="tab" data-toggle="tab"><span>Campaign Home</span></a></li>
+              <li role="presentation"><a href="#Backer" aria-controls="Backer" role="tab" data-toggle="tab">  <span>Backer</span></a></li>
+              <li role="presentation"><a href="#Updates" aria-controls="Updates" role="tab" data-toggle="tab"> <span>Updates</span></a></li>
+              <!-- <li role="presentation"><a href="#FAQ" aria-controls="FAQ" role="tab" data-toggle="tab"> <span>FAQ</span></a></li> -->
+              <li role="presentation"><a href="#_Comments" aria-controls="Comments" role="tab" data-toggle="tab"><span>Comments</span></a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active blog-single-section" id="Campaign">
+                <div class="row">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="blog-content">
+                      <div class="post format-standard-image">
+                        <div class="entry-media"> <img src="<%= campaign.photo || 'https://dummyimage.com/600x400/f26422/00ffff.png&text=mpampe' %>" alt=""> </div>
+                        <ul class="entry-meta">
+                          <li><a href="#"><i class="far fa-clock"></i><%= new Date(campaign.createdAt).toDateString() %></a></li>
+                          <li><a href="#"><i class="fas fa-funnel-dollar"></i><%= campaign.category %></a></li>
+                          <li><a href="#"><i class="fas fa-comments"></i>0</a></li>
+                        </ul>
+                        <h2><%= campaign.title %></h2>
+                        <p><%= campaign.description %></p>
+                      </div>
+                      <div class="tag-share">
+                        <div class="share"> Share: &nbsp;
+                          <ul>
+                            <li><a target="_Blank" href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a target="_Blank" href="https://www.twitter.com"><i class="fab fa-twitter"></i></a></li>
+                            <li><a target="_Blank" href="https://www.google.com"><i class="fab fa-google-plus-g"></i></a></li>
+                            <li><a target="_Blank" href="https://www.linkedin.com"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a target="_Blank" href="https://www.instagram.com"><i class="fab fa-instagram"></i></a></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <br />
+                      <!-- end tag-share -->
+                      <h2>Author</h2>
+                      <div class="author-box">
+                        <div class="author-content"> <a href="#" class="author-name"><%= campaign.user.fullName %></a>
+                          <div class="socials">
+                            <ul class="social-link">
+                              <li><a href="#"><i class="ti-facebook"></i></a></li>
+                              <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
+                              <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                              <li><a href="#"><i class="ti-instagram"></i></a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>              
+                      <div class="more-posts">
+                        <div class="previous-post"> <a href="#"> <span class="post-control-link"><i class="ti-arrow-circle-left"> </i>Previous Campaign</span> </a> </div>
+                        <div class="next-post"> <a href="#"> <span class="post-control-link">Next Campaign <i class="ti-arrow-circle-right"></i></span> </a> </div>
+                      </div>
+                      <!-- end more-posts --> 
+                      
+                      <!-- end comments-area --> 
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="Backer">
+                <div class="row">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="card mb-4">
+                      <div class="card-body"> 
+                        <!-- Grid row --> 
+                        
+                        <!-- Grid row --> 
+                        <!--Table-->
+                        <table class="table table-striped">
+                          <!--Table head-->
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>Name</th>
+                              <th>Date</th>
+                              <th>Amount</th>
+                            </tr>
+                          </thead>
+                          <!--Table head--> 
+                          <!--Table body-->
+                          <tbody>
+                            <% if (campaign.donors.length) { %>
+                              <% campaign.donors.forEach(function(donor,index){ %>
+                            <tr>
+                              <th scope="row"><%= index+1%></th>
+                              <td><%= donor.name %></td>
+                              <td><%= donor.date %></td>
+                              <td><%= donor.amount %></td>
+                            </tr>
+                            <% }); %>                         
+                            <% }; %>                         
+                          </tbody>
+                          <!--Table body-->
+                        </table>
+                        <!--Table--> 
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-12 col-xs-12">
+          <div class="campaign-item">
+            <div class="campaign-box"> <a href="#" class="category"><%= campaign.category %></a>
+              <h3><a href=""><%= campaign.title %></a></h3>
+              <div class="campaign-description"><%= campaign.shortDescription %></div>
+              <div class="campaign-author">by <a class="author-name" href="#"><%= campaign.user.fullName %></a></div>
+              <div class="process">
+                <div class="progress">
+                  <div class="progress-bar" style="width: <%= campaign.percentage %>%;">
+                    <div class="progress-value"><span><%= campaign.percentage %></span>%</div>
+                  </div>
+                </div>
+                <div class="process-info">
+                  <div class="process-pledged"><span><%= campaign.daysLeft %></span>Days left</div>
+                  <div class="process-funded"><span><%= campaign.backers %></span><%= campaign.backers > 1 ? 'Backers': 'Backer' %></div>
+                  <div class="process-time">
+                    <span>                   
+                      <script>
+                        document.write(currencyFormatter('<%= campaign.funds %>'));
+                      </script>
+                    </span>Funded
+                  </div>
+                </div>
+                <% if (user?.id === campaign.user.id) { %>
+                  <div style="margin: 10px;">
+                    <a href="/transfer">
+                      <button class="btn btn-flat btn-dark btn-theme-colored">WITHDRAW</button>
+                    </a>
+                  </div>
+                <% } %>
+              </div>
+            </div>
+          </div>
+          <div class="campaign-item">
+            <div class="bg-light-transparent">
+              <h4 class="text-uppercase line-bottom">Make a Donation</h4>
+              
+              <!-- Paypal Both Onetime/Recurring Form Starts -->
+              <form>
+                <div class="row">
+                  <a href="https://mpampedonation.onrender.com/" class="donate-button" target="_blank">
+                    Donate Now!
+                  </a>
+
+                  <a href="https://mpampeinvoice.onrender.com/" class="invoice-button" target="_blank">
+                    Create Invoice!
+                  </a>
+                </div>
+              </form>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <%- include('common/ajax.ejs') %>
+  
+<script type="text/javascript">
+  function submitForm(event) {
+    event.preventDefault();
+
+    const form = document.getElementById("paypal_donate_form");
+    const formEntries = new FormData(form).entries();
+    const flashNotice = document.getElementById("flashNotice");
+    const donateBtn = document.getElementById("donateBtn")
+    const formData = Object.assign(
+      ...Array.from(formEntries, ([x, y]) => ({ [x]: y }))
+    );
+
+    donateBtn.innerText = "Processing...";
+
+    postData("/api/v1/donations/fund/<%= campaign.id %>", formData).then((data) => {
+      donateBtn.innerText = "Donate With MTM MOMO";
+      alert(data.message);
+      flashNotice.innerHTML = data.message;
+      flashNotice.style.display = "block";
+      flashNotice.innerHTML = "";
+      flashNotice.style.display = "none";
+      setTimeout(()=> window.location.reload(), 2000)
+      form.reset();
+    });
+  }
+</script>

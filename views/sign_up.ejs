@@ -1,0 +1,116 @@
+<% extend('layout') %>
+<div class="main-banner item-bg-one inner-banner">
+  <div class="d-table">
+    <div class="d-table-cell">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12">
+            <h2>Get started</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <div class="login100-pic js-tilt" data-tilt>
+        <img src="images/login.jpg" alt="IMG" />
+      </div>
+      <form
+        class="login100-form validate-form"
+        onsubmit="submitForm(event)"
+        id="userDataForm"
+      >
+        <div style="margin-bottom: 15px; display: none" id="flashNotice"></div>
+
+        <div class="wrap-input100 validate-input" data-validate="">
+          <input
+            class="input100"
+            type="text"
+            name="fullName"
+            placeholder="Full Name"
+          />
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <i class="fas fa-user-friends"></i>
+          </span>
+        </div>
+
+        <div class="wrap-input100 validate-input" data-validate="">
+          <input
+            class="input100"
+            type="text"
+            name="username"
+            placeholder="User Name"
+          />
+          <span class="focus-input100"></span>
+          <span class="symbol-input100"> <i class="fas fa-user-tie"></i> </span>
+        </div>
+
+        <div
+          class="wrap-input100 validate-input"
+          data-validate="Valid email is required: ex@abc.xyz"
+        >
+          <input
+            class="input100"
+            type="text"
+            name="email"
+            placeholder="Email"
+          />
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+          </span>
+        </div>
+        <div
+          class="wrap-input100 validate-input"
+          data-validate="Password is required"
+        >
+          <input
+            class="input100"
+            type="password"
+            name="password"
+            placeholder="Password"
+          />
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+          </span>
+        </div>
+        <div class="container-login100-form-btn">
+          <button class="login100-form-btn" id="regBtn">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include('common/ajax.ejs') %>
+
+<script type="text/javascript">
+  function submitForm(event) {
+    event.preventDefault();
+    const form = document.getElementById("userDataForm");
+    const formEntries = new FormData(form).entries();
+    const flashNotice = document.getElementById("flashNotice");
+    const formData = Object.assign(
+      ...Array.from(formEntries, ([x, y]) => ({ [x]: y }))
+    );
+
+    postData("/api/v1/auth", formData).then((data) => {
+      if (data.message) {
+        flashNotice.innerHTML = data.message;
+        flashNotice.style.display = "block";
+
+        setTimeout(() => {
+          flashNotice.innerHTML = "";
+          flashNotice.style.display = "none";
+        }, 3000);
+      } else {
+        window.location.reload();
+      }
+    });
+  }
+</script>
